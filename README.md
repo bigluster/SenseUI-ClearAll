@@ -6,4 +6,4 @@ A Simple ClearAll() button
 
 ---
 
-[Download zip file](https://github.com/yianni-ververis/SenseUI-DropDown/archive/master.zip)
+[Download zip file](https://github.com/yianni-ververis/SenseUI-ClearAll/archive/master.zip)
