@@ -2,12 +2,9 @@ define([
 	"qlik",
 	"jquery",
 	"qvangular",
-	'underscore',
-	"core.utils/theme",
-	"./bootstrap.min",
 	"css!./bootstrap.css",
 	"css!./senseui-clearall.css",
-], function(qlik, $, qvangular, _, Theme, ngBootstrap) {
+], function(qlik, $, qvangular) {
 'use strict';
 
 	// Define properties
