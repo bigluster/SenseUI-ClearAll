@@ -3,7 +3,6 @@ define([
 	"jquery",
 	"qvangular",
 	"css!./bootstrap.css",
-	"css!./senseui-clearall.css",
 ], function(qlik, $, qvangular) {
 'use strict';
 
@@ -81,6 +80,7 @@ define([
 	// Alter properties on edit		
 	me.paint = function($element,layout) {
 		var vars = {
+			v: '1.1.2',
 			id: layout.qInfo.qId,
 			height: $element.height(),
 			width: $element.width(),
@@ -94,32 +94,36 @@ define([
 		}
 		
 		vars.template = '\
-			<div qv-extension class="senseui-clearall" id="' + vars.id + '_senseui_clearall">\
+			<div qv-extension id="' + vars.id + '_senseui_clearall">\
 				<button class="btn btn-default btn-block" type="button">\n\
 					' + vars.text + '\n\
 				</button>\n\
 			</div>\n\
 		';
 
+		vars.css = '\n\
+			#' + vars.id + '_senseui_clearall button {\n\
+				padding: ' + vars.padding + '; \n\
+			}\n\
+			#' + vars.id + '_senseui_clearall .btn-default {\n\
+				color: ' + vars.txtColor + '; \n\
+				background-color: ' + vars.bgColor + '; \n\
+				border-width: ' + vars.borderWidth + '; \n\
+				border-radius: ' + vars.borderRadius + 'px; \n\
+			}\n\
+		';
+
+		$("<style>").html(vars.css).appendTo("head");
 		$element.html(vars.template);
 
-		$( '#' + vars.id + '_senseui_clearall button' ).click(function(e) {
+// eHmVzCY_senseui_clearall
+		$( '#' + vars.id + '_senseui_clearall' ).click(function(e) {
+			console.log(555555555555555)
 			me.app.clearAll();
 		});
 
-		// CSS
-		$( '#' + vars.id + '_senseui_clearall button' ).css( "padding", vars.padding );
-		$( '#' + vars.id + '_senseui_clearall .btn-default' ).css( "background-color", vars.bgColor );
-		$( '#' + vars.id + '_senseui_clearall .btn-default' ).css( "border-width", vars.borderWidth );
-		$( '#' + vars.id + '_senseui_clearall .btn-default' ).css( "border-radius", vars.borderRadius + 'px' );
+		console.info('%c SenseUI-ClearAll Button ' + vars.v + ': ', 'color: red', '#' + vars.id + ' Loaded!');
 	};
-
-	// define HTML template	
-	// me.template = '';
-
-	// Controller for binding
-	me.controller =['$scope', function($scope){
-	}];
 
 	return me;
 });
